@@ -1,0 +1,19 @@
+version: "3"
+services:
+  web:
+    image: antonu17/lamp-web:apache-php7
+    links:
+      - db:mysql
+    ports:
+      - 8080:80
+    restart: always
+    volumes:
+      - /var/www/html
+
+  db:
+    image: mysql:5.6
+    environment:
+      MYSQL_ROOT_PASSWORD: pas$w0rd
+    restart: always
+    volumes:
+      - /var/lib/mysql
