@@ -20,3 +20,12 @@ RUN apt-get update \
   && docker-php-ext-install mysqli \
   && docker-php-ext-install mcrypt \
   && docker-php-ext-install zip
+
+RUN groupadd --gid 48 \
+             apache \
+  && useradd --uid 48 \
+             --gid 48 \
+             --no-create-home \
+             --home-dir /var/www \
+             --shell /usr/sbin/nologin \
+             apache
